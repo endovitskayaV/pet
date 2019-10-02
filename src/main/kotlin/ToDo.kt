@@ -1,1 +1,0 @@
-data class ToDo(var id: Int, val name: String, val description: String, val completed: Boolean)
