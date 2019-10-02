@@ -5,7 +5,7 @@ import da.model.Data
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class DatasController {
+class DataController {
 
     fun index(): ArrayList<Data> {
         val messages: ArrayList<Data> = arrayListOf()

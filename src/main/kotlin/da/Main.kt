@@ -2,7 +2,8 @@ package da
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import da.controller.DatasController
+import da.controller.DataController
+import da.entity.DataEntity
 import da.location.data
 import da.location.index
 import io.ktor.application.Application
@@ -12,6 +13,8 @@ import io.ktor.gson.gson
 import io.ktor.locations.Locations
 import io.ktor.routing.*
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.transactions.transaction
 import java.text.DateFormat
 
 fun initDB() {
@@ -36,10 +39,15 @@ fun Application.main() {
     }
     initDB()
 
-    val datasController = DatasController()
+    val datasController = DataController()
 
     routing {
         index(datasController)
         data(datasController)
+    }
+
+    transaction {
+
+        SchemaUtils.create(DataEntity) //creates table
     }
 }
