@@ -18,8 +18,6 @@ import java.text.DateFormat
 
 fun initDB() {
     val config = HikariConfig("/hikari.properties")
-    config.addDataSourceProperty("characterEncoding","utf8"); //tried with UTF-8 as well
-    config.addDataSourceProperty("useUnicode","true");
     val ds = HikariDataSource(config)
     Database.connect(ds)
 }
